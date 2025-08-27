@@ -7,8 +7,8 @@ $unattachedDataDisks = $allDisks | Where-Object {
     $null -eq $_.OsType
 }
 
-$jsonOutput = @($unattachedDataDisks) | ConvertTo-Json
+$jsonOutput = @($unattachedDataDisks) | ConvertTo-Json -Depth 5
 
-$jsonOutput | Out-File -FilePath ".\result.json"
+Set-Content -Path ".\result.json" -Value $jsonOutput
 
 Write-Host "result.json"
